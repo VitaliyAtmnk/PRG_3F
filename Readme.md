@@ -4,6 +4,7 @@
 ## Struktura
 - celý projekt je časově rozdělen dle tematického plánu, který byl vytvořen v roce 2024/2025
 - každá složka s měsícem obsahuje stejný počet podsložek, jako je počet odučených hodin v konkrétním měsíci
+  - výjimkou jsou situace, kdy materiály na jednu hodinu jsou vyučovány vícero hodin, poté může být složek méně 
 ### .md soubory
 - slouží jako poznámky z teoretických hodin
 - syntaxe jednotlivých konstrukcí + příklady
