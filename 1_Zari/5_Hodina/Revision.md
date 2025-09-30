@@ -50,6 +50,6 @@ Normalizace řetězce
 ---
 
 - První písmeno velké (Title Case)
-- Úkol: Každé slovo začni velkým písmenem (respektuj češtinu).
-- Signatura: string ToTitleCase(string input, CultureInfo culture)
+- Úkol: Každé slovo začni velkým písmenem.
+- Signatura: string ToTitleCase(string input)
 - Příklad: "mistr a markétka" → "Mistr A Markétka"
