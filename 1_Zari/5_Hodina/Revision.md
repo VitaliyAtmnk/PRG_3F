@@ -1,6 +1,6 @@
 ﻿# Opakování na test
 
-- 7.1.2025
+- 7.10.2025
 - vše od začátku roku (prostudujte si materiály z 2. hodiny)
 - 3 příklady s rostoucí náročností
 - váha 6
