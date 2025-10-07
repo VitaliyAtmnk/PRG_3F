@@ -1,6 +1,6 @@
 ﻿# Opakování na test
 
-- 7.1.2025
+- 7.10.2025
 - vše od začátku roku (prostudujte si materiály z 2. hodiny)
 - 3 příklady s rostoucí náročností
 - váha 6
@@ -50,6 +50,6 @@ Normalizace řetězce
 ---
 
 - První písmeno velké (Title Case)
-- Úkol: Každé slovo začni velkým písmenem (respektuj češtinu).
-- Signatura: string ToTitleCase(string input, CultureInfo culture)
+- Úkol: Každé slovo začni velkým písmenem.
+- Signatura: string ToTitleCase(string input)
 - Příklad: "mistr a markétka" → "Mistr A Markétka"
