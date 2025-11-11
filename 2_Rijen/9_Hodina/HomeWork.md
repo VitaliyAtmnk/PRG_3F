@@ -48,6 +48,51 @@ Vygenerované heslo: A7m!rK@9pQ
 */
 ```
 
+```csharp
+public class PasswordGenerator
+{
+    int Length { get; set; }
+    bool UseNumbers { get; set; }
+    bool UseSpecialChars { get; set; }
+
+    // alt + insert -> constructor
+
+    public PasswordGenerator(int length, bool useNumbers, bool useSpecialChars)
+    {
+        Length = length;
+        UseNumbers = useNumbers;
+        UseSpecialChars = useSpecialChars;
+    }
+
+    public string Generate()
+    {
+        string allowedCharacters = "abcdefghijklmnopqrstuvwxyABCDEFGHIJKLMNOPQRSTUVWXY";
+        string password = "";
+
+        if (UseNumbers)
+        {
+            allowedCharacters += "0123456789";
+        }
+
+        if (UseSpecialChars)
+        {
+            allowedCharacters += "!@#$%";
+        }
+
+        var rng = new Random();
+
+        for (int i = 0; i < Length; i++)
+        {
+            int randomIndex = rng.Next(0, allowedCharacters.Length);
+            char randomChar = allowedCharacters[randomIndex];
+            password += randomChar;
+        }
+
+        return password;
+    }
+}
+```
+
 ---
 
 ## 🧩 Úloha 2 – **Student**
