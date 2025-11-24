@@ -44,6 +44,12 @@ Změní text labelu na `ChangedText`
 
 3. Tlačítko se "vypne" a nelze s ním interagovat
 
+- Jak nastavit Font
+```csharp
+float puvodniVelikost = fontName.Font.Size;
+fontName.Font = new Font("Arial", 12);
+```
+
 #### Color
 
 - Přepína mezi červenou a modrou barvou pozadí labelu.
