@@ -8,3 +8,7 @@
 ### .md soubory
 - slouží jako poznámky z teoretických hodin
 - syntaxe jednotlivých konstrukcí + příklady
+
+#### DB materiály:
+
+[zde](https://app.gitbook.com/o/YH8ulFIzhdPhMLk3DqGh/s/MGFAHHD5S97W9dGJKG70/sql/sql-ukol-1)
