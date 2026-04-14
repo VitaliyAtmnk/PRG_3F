@@ -20,16 +20,16 @@ Jednoduchá ukázka v XAML:
 
 ```XML
 
-<CheckBox x:Name\="chbSouhlas"  
-          Content\="Souhlasím s podmínkami"  
-          Margin\="10" />
+<CheckBox x:Name="chbSouhlas"  
+          Content="Souhlasím s podmínkami"  
+          Margin="10" />
 ```
 
 Kontrola hodnoty v C#:
 
 ```Csharp
 
-if (chbSouhlas.IsChecked \== true)  
+if (chbSouhlas.IsChecked == true)  
 {  
     MessageBox.Show("CheckBox je zaškrtnutý.");  
 }  
@@ -43,21 +43,21 @@ Ukázka s událostmi:
 
 ```XML
 
-<CheckBox x:Name\="chbNotifikace"  
-          Content\="Zapnout notifikace"  
-          Margin\="10"  
-          Checked\="chbNotifikace\_Checked"  
-          Unchecked\="chbNotifikace\_Unchecked" />
+<CheckBox x:Name="chbNotifikace"  
+          Content="Zapnout notifikace"  
+          Margin="10"  
+          Checked="chbNotifikace_Checked"  
+          Unchecked="chbNotifikace_Unchecked" />
 ```
 
 ```csharp
 
-private void chbNotifikace\_Checked(object sender, RoutedEventArgs e)  
+private void chbNotifikace_Checked(object sender, RoutedEventArgs e)  
 {  
     MessageBox.Show("Notifikace byly zapnuty.");  
 }  
   
-private void chbNotifikace\_Unchecked(object sender, RoutedEventArgs e)  
+private void chbNotifikace_Unchecked(object sender, RoutedEventArgs e)  
 {  
     MessageBox.Show("Notifikace byly vypnuty.");  
 }
@@ -67,19 +67,19 @@ Ukázka tří stavů:
 
 ```XML
 
-<CheckBox x:Name\="chbStav"  
-          Content\="Neurčený stav"  
-          Margin\="10"  
-          IsThreeState\="True" />
+<CheckBox x:Name="chbStav"  
+          Content="Neurčený stav"  
+          Margin="10"  
+          IsThreeState="True" />
 ```
 
 ```Csharp
 
-if (chbStav.IsChecked \== true)  
+if (chbStav.IsChecked == true)  
 {  
     MessageBox.Show("Zaškrtnuto");  
 }  
-else if (chbStav.IsChecked \== false)  
+else if (chbStav.IsChecked == false)  
 {  
     MessageBox.Show("Odškrtnuto");  
 }  
@@ -111,15 +111,15 @@ Jednoduchá ukázka v XAML:
 
 ```XML
 
-<StackPanel Margin\="10"\>  
-    <RadioButton x:Name\="rbMuz"  
-                 Content\="Muž"  
-                 GroupName\="Pohlavi"  
-                 Margin\="0,0,0,5" />  
+<StackPanel Margin="10">  
+    <RadioButton x:Name="rbMuz"  
+                 Content="Muž"  
+                 GroupName="Pohlavi"  
+                 Margin="0,0,0,5" />  
   
-    <RadioButton x:Name\="rbZena"  
-                 Content\="Žena"  
-                 GroupName\="Pohlavi" />  
+    <RadioButton x:Name="rbZena"  
+                 Content="Žena"  
+                 GroupName="Pohlavi" />  
 </StackPanel>
 ```
 
@@ -127,11 +127,11 @@ Zjištění vybrané možnosti v C#:
 
 ```csharp
 
-if (rbMuz.IsChecked \== true)  
+if (rbMuz.IsChecked == true)  
 {  
     MessageBox.Show("Vybrána možnost Muž.");  
 }  
-else if (rbZena.IsChecked \== true)  
+else if (rbZena.IsChecked == true)  
 {  
     MessageBox.Show("Vybrána možnost Žena.");  
 }
@@ -141,22 +141,22 @@ Ukázka s více možnostmi:
 
 ```XML
 
-<StackPanel Margin\="10"\>  
-    <TextBlock Text\="Způsob dopravy:" Margin\="0,0,0,5"/>  
+<StackPanel Margin="10">  
+    <TextBlock Text="Způsob dopravy:" Margin="0,0,0,5"/>  
   
-    <RadioButton x:Name\="rbAuto"  
-                 Content\="Auto"  
-                 GroupName\="Doprava"  
-                 Margin\="0,0,0,5" />  
+    <RadioButton x:Name="rbAuto"  
+                 Content="Auto"  
+                 GroupName="Doprava"  
+                 Margin="0,0,0,5" />  
   
-    <RadioButton x:Name\="rbVlak"  
-                 Content\="Vlak"  
-                 GroupName\="Doprava"  
-                 Margin\="0,0,0,5" />  
+    <RadioButton x:Name="rbVlak"  
+                 Content="Vlak"  
+                 GroupName="Doprava"  
+                 Margin="0,0,0,5" />  
   
-    <RadioButton x:Name\="rbAutobus"  
-                 Content\="Autobus"  
-                 GroupName\="Doprava" />  
+    <RadioButton x:Name="rbAutobus"  
+                 Content="Autobus"  
+                 GroupName="Doprava" />  
 </StackPanel>
 ```
 
@@ -164,15 +164,15 @@ Událost Checked:
 
 ```XML
 
-<RadioButton x:Name\="rbKarta"  
-             Content\="Platba kartou"  
-             GroupName\="Platba"  
-             Checked\="rbKarta\_Checked" />
+<RadioButton x:Name="rbKarta"  
+             Content="Platba kartou"  
+             GroupName="Platba"  
+             Checked="rbKarta_Checked" />
 ```
 
 ```C#
 
-private void rbKarta\_Checked(object sender, RoutedEventArgs e)  
+private void rbKarta_Checked(object sender, RoutedEventArgs e)  
 {  
     MessageBox.Show("Byla vybrána platba kartou.");  
 }
@@ -199,10 +199,10 @@ Jednoduchá ukázka v XAML:
 
 ```XML
 
-<ComboBox x:Name\="cmbMesto" Width\="150" Margin\="10"\>  
-    <ComboBoxItem Content\="Praha" />  
-    <ComboBoxItem Content\="Brno" />  
-    <ComboBoxItem Content\="Ostrava" />  
+<ComboBox x:Name="cmbMesto" Width="150" Margin="10">  
+    <ComboBoxItem Content="Praha" />  
+    <ComboBoxItem Content="Brno" />  
+    <ComboBoxItem Content="Ostrava" />  
 </ComboBox>
 ```
 
@@ -210,7 +210,7 @@ Zjištění vybrané položky v C#:
 
 ```csharp
 
-ComboBoxItem vybraneMesto \= (ComboBoxItem)cmbMesto.SelectedItem;  
+ComboBoxItem vybraneMesto = (ComboBoxItem)cmbMesto.SelectedItem;  
   
 if (vybraneMesto != null)  
 {  
@@ -222,7 +222,7 @@ Výběr položky podle indexu:
 
 ```csharp
 
-cmbMesto.SelectedIndex \= 0;
+cmbMesto.SelectedIndex = 0;
 ```
 
 To znamená, že se vybere první položka v seznamu.
@@ -248,21 +248,21 @@ Ukázka události SelectionChanged:
 
 ```XML
 
-<ComboBox x:Name\="cmbJazyk"  
-          Width\="150"  
-          Margin\="10"  
-          SelectionChanged\="cmbJazyk\_SelectionChanged"\>  
-    <ComboBoxItem Content\="Čeština" />  
-    <ComboBoxItem Content\="Angličtina" />  
-    <ComboBoxItem Content\="Němčina" />  
+<ComboBox x:Name="cmbJazyk"  
+          Width="150"  
+          Margin="10"  
+          SelectionChanged="cmbJazyk_SelectionChanged">  
+    <ComboBoxItem Content="Čeština" />  
+    <ComboBoxItem Content="Angličtina" />  
+    <ComboBoxItem Content="Němčina" />  
 </ComboBox>
 ```
 
 ```csharp
 
-private void cmbJazyk\_SelectionChanged(object sender, SelectionChangedEventArgs e)  
+private void cmbJazyk_SelectionChanged(object sender, SelectionChangedEventArgs e)  
 {  
-    ComboBoxItem vybranyJazyk \= (ComboBoxItem)cmbJazyk.SelectedItem;  
+    ComboBoxItem vybranyJazyk = (ComboBoxItem)cmbJazyk.SelectedItem;  
   
     if (vybranyJazyk != null)  
     {  
@@ -290,42 +290,42 @@ Uživatel vybírá jednu položku z rozbalovacího seznamu.
 
 ```XML
 
-<Window x:Class\="WpfApp1.MainWindow"  
-        xmlns\="http://schemas.microsoft.com/winfx/2006/xaml/presentation"  
-        xmlns:x\="http://schemas.microsoft.com/winfx/2006/xaml"  
-        Title\="Ukázka prvků" Height\="300" Width\="300"\>  
-    <StackPanel Margin\="10"\>  
+<Window x:Class="WpfApp1.MainWindow"  
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"  
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"  
+        Title="Ukázka prvků" Height="300" Width="300">  
+    <StackPanel Margin="10">  
   
-        <CheckBox x:Name\="chbDarkMode"  
-                  Content\="Tmavý režim"  
-                  Margin\="0,0,0,10"/>  
+        <CheckBox x:Name="chbDarkMode"  
+                  Content="Tmavý režim"  
+                  Margin="0,0,0,10"/>  
   
-        <TextBlock Text\="Velikost písma:" Margin\="0,0,0,5"/>  
+        <TextBlock Text="Velikost písma:" Margin="0,0,0,5"/>  
   
-        <RadioButton x:Name\="rbMale"  
-                     Content\="Malé"  
-                     GroupName\="Velikost"  
-                     Margin\="0,0,0,5"/>  
+        <RadioButton x:Name="rbMale"  
+                     Content="Malé"  
+                     GroupName="Velikost"  
+                     Margin="0,0,0,5"/>  
   
-        <RadioButton x:Name\="rbStredni"  
-                     Content\="Střední"  
-                     GroupName\="Velikost"  
-                     Margin\="0,0,0,5"/>  
+        <RadioButton x:Name="rbStredni"  
+                     Content="Střední"  
+                     GroupName="Velikost"  
+                     Margin="0,0,0,5"/>  
   
-        <RadioButton x:Name\="rbVelke"  
-                     Content\="Velké"  
-                     GroupName\="Velikost"  
-                     Margin\="0,0,0,10"/>  
+        <RadioButton x:Name="rbVelke"  
+                     Content="Velké"  
+                     GroupName="Velikost"  
+                     Margin="0,0,0,10"/>  
   
-        <ComboBox x:Name\="cmbBarva" Width\="120" Margin\="0,0,0,10"\>  
-            <ComboBoxItem Content\="Červená"/>  
-            <ComboBoxItem Content\="Modrá"/>  
-            <ComboBoxItem Content\="Zelená"/>  
+        <ComboBox x:Name="cmbBarva" Width="120" Margin="0,0,0,10">  
+            <ComboBoxItem Content="Červená"/>  
+            <ComboBoxItem Content="Modrá"/>  
+            <ComboBoxItem Content="Zelená"/>  
         </ComboBox>  
   
-        <Button Content\="Zobrazit volby"  
-                Click\="Button\_Click"  
-                Width\="120"/>  
+        <Button Content="Zobrazit volby"  
+                Click="Button_Click"  
+                Width="120"/>  
     </StackPanel>  
 </Window>
 ```
@@ -334,27 +334,27 @@ C#:
 
 ```Csharp
 
-private void Button\_Click(object sender, RoutedEventArgs e)  
+private void Button_Click(object sender, RoutedEventArgs e)  
 {  
-    string darkMode \= chbDarkMode.IsChecked \== true ? "Ano" : "Ne";  
+    string darkMode = chbDarkMode.IsChecked == true ? "Ano" : "Ne";  
   
-    string velikost \= "";  
-    if (rbMale.IsChecked \== true)  
-        velikost \= "Malé";  
-    else if (rbStredni.IsChecked \== true)  
-        velikost \= "Střední";  
-    else if (rbVelke.IsChecked \== true)  
-        velikost \= "Velké";  
+    string velikost = "";  
+    if (rbMale.IsChecked == true)  
+        velikost = "Malé";  
+    else if (rbStredni.IsChecked == true)  
+        velikost = "Střední";  
+    else if (rbVelke.IsChecked == true)  
+        velikost = "Velké";  
   
-    string barva \= "";  
-    ComboBoxItem vybranaBarva \= (ComboBoxItem)cmbBarva.SelectedItem;  
+    string barva = "";  
+    ComboBoxItem vybranaBarva = (ComboBoxItem)cmbBarva.SelectedItem;  
     if (vybranaBarva != null)  
-        barva \= vybranaBarva.Content.ToString();  
+        barva = vybranaBarva.Content.ToString();  
   
     MessageBox.Show(  
         "Tmavý režim: " + darkMode +  
-        "\\nVelikost písma: " + velikost +  
-        "\\nBarva: " + barva  
+        "nVelikost písma: " + velikost +  
+        "nBarva: " + barva  
     );  
 }
 ```
