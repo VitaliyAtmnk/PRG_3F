@@ -1,908 +1,694 @@
-# **WPF: práce s více okny – základní informace**
+# WPF: práce s více okny – základní informace
 
-### **Co je okno ve WPF?**
+## Co je okno ve WPF?
 
-Ve WPF se okno vytváří pomocí třídy `Window`. Okno slouží jako hlavní kontejner aplikace – obsahuje ovládací prvky, zobrazuje data a umožňuje uživateli pracovat s aplikací. Třída `Window` se používá pro běžná aplikační okna i dialogová okna. [Microsoft Learn+1](https://learn.microsoft.com/cs-cz/dotnet/desktop/wpf/windows/)
+Ve WPF se okno vytváří pomocí třídy `Window`. Okno slouží jako hlavní kontejner aplikace – obsahuje ovládací prvky, zobrazuje data a umožňuje uživateli pracovat s aplikací. Třída `Window` se používá pro běžná aplikační okna i dialogová okna. [Microsoft Learn](https://learn.microsoft.com/cs-cz/dotnet/desktop/wpf/windows/)
 
-> Oficiální dokumentace → Window, WPF windows, dialogová okna [Microsoft Learn+2Microsoft Learn+2](https://learn.microsoft.com/en-us/dotnet/api/system.windows.window?view=windowsdesktop-10.0)
+> Oficiální dokumentace: [Window](https://learn.microsoft.com/en-us/dotnet/api/system.windows.window?view=windowsdesktop-10.0), [WPF windows](https://learn.microsoft.com/cs-cz/dotnet/desktop/wpf/windows/) a [dialogová okna](https://learn.microsoft.com/cs-cz/dotnet/desktop/wpf/windows/dialog-boxes-overview).
 
 ---
 
-## **Více oken ve WPF**
+## Více oken ve WPF
 
-Aplikace ve WPF může obsahovat více samostatných oken.  
+Aplikace ve WPF může obsahovat více samostatných oken.
+
 Typicky máme:
 
--   hlavní okno aplikace, například `MainWindow`
-    
--   další okna, například nastavení, detail záznamu, přihlašovací okno nebo dialog
-    
+- hlavní okno aplikace, například `MainWindow`,
+- další okna, například nastavení, detail záznamu, přihlašovací okno nebo dialog.
 
 Každé okno je většinou samostatná třída dědící z `Window`.
 
 Příklad:
 
-```
-C#
-
-```
-publicpartialclassSecondWindow : Window  
-{  
-publicSecondWindow()  
-    {  
-InitializeComponent();  
-    }  
+```csharp
+public partial class SecondWindow : Window
+{
+    public SecondWindow()
+    {
+        InitializeComponent();
+    }
 }
-```
 ```
 
 ---
 
-# **Vytvoření nového okna**
+## Vytvoření nového okna
 
-## **1\. Přidání nového okna do projektu**
+### 1. Přidání nového okna do projektu
 
 Ve Visual Studiu:
 
-1.  Pravým tlačítkem na projekt
-    
-2.  **Add**
-    
-3.  **Window (WPF)**
-    
-4.  Například název `SecondWindow.xaml`
-    
+1. Pravým tlačítkem klikněte na projekt.
+2. Vyberte **Add**.
+3. Vyberte **Window (WPF)**.
+4. Zadejte například název `SecondWindow.xaml`.
 
 Vzniknou dva soubory:
 
-```
-```
-SecondWindow.xaml  
+```text
+SecondWindow.xaml
 SecondWindow.xaml.cs
-```
 ```
 
 ---
 
-## **2\. Otevření dalšího okna**
+### 2. Otevření dalšího okna
 
 Nové okno se otevře tak, že vytvoříme jeho instanci a zavoláme metodu `Show()` nebo `ShowDialog()`.
 
-```
-C#
-
-```
-SecondWindowwindow=newSecondWindow();  
+```csharp
+SecondWindow window = new SecondWindow();
 window.Show();
-```
 ```
 
 Metoda `Show()` otevře okno nemodálně – uživatel může pracovat i s ostatními okny aplikace. [Microsoft Learn](https://learn.microsoft.com/en-us/dotnet/desktop/wpf/windows/how-to-open-window-dialog-box)
 
 ---
 
-# **Show vs. ShowDialog**
+## Show vs. ShowDialog
 
-## **Show**
+### Show
 
 `Show()` otevře nové okno jako běžné samostatné okno.
 
-```
-C#
-
-```
-SecondWindowwindow=newSecondWindow();  
+```csharp
+SecondWindow window = new SecondWindow();
 window.Show();
 ```
-```
 
-Po zavolání `Show()` program pokračuje dál.  
-Uživatel může přepínat mezi hlavním a novým oknem. [Microsoft Learn](https://learn.microsoft.com/en-us/dotnet/desktop/wpf/windows/how-to-open-window-dialog-box)
+Po zavolání `Show()` program pokračuje dál. Uživatel může přepínat mezi hlavním a novým oknem. [Microsoft Learn](https://learn.microsoft.com/en-us/dotnet/desktop/wpf/windows/how-to-open-window-dialog-box)
 
 Používá se například pro:
 
--   okno s nastavením
-    
--   okno s detailem položky
-    
--   náhled
-    
--   pomocné okno aplikace
-    
+- okno s nastavením,
+- okno s detailem položky,
+- náhled,
+- pomocné okno aplikace.
 
 ---
 
-## **ShowDialog**
+### ShowDialog
 
-`ShowDialog()` otevře okno modálně.  
-To znamená, že uživatel musí toto okno nejdříve zavřít, než bude pokračovat práce s původním oknem. Volající kód čeká, dokud se dialog nezavře. [Microsoft Learn+1](https://learn.microsoft.com/cs-cz/dotnet/desktop/wpf/windows/dialog-boxes-overview)
+`ShowDialog()` otevře okno modálně. To znamená, že uživatel musí toto okno nejdříve zavřít, než bude pokračovat práce s původním oknem. Volající kód čeká, dokud se dialog nezavře. [Microsoft Learn](https://learn.microsoft.com/cs-cz/dotnet/desktop/wpf/windows/dialog-boxes-overview)
 
-```
-C#
-
-```
-SecondWindowwindow=newSecondWindow();  
+```csharp
+SecondWindow window = new SecondWindow();
 window.ShowDialog();
 ```
-```
 
 Používá se například pro:
 
--   potvrzovací dialog
-    
--   přihlašovací okno
-    
--   formulář, kde uživatel musí potvrdit nebo zrušit akci
-    
--   výběr hodnoty
-    
+- potvrzovací dialog,
+- přihlašovací okno,
+- formulář, kde uživatel musí potvrdit nebo zrušit akci,
+- výběr hodnoty.
 
 ---
 
-# **DialogResult**
+## DialogResult
 
 `DialogResult` slouží k tomu, aby dialogové okno vrátilo informaci, zda uživatel akci potvrdil nebo zrušil. Hodnota `true` obvykle znamená potvrzení, hodnota `false` zrušení. [Microsoft Learn](https://learn.microsoft.com/en-us/dotnet/api/system.windows.window.dialogresult?view=windowsdesktop-10.0)
 
 Příklad v dialogovém okně:
 
-```
-C#
-
-```
-privatevoidOkButton_Click(objectsender, RoutedEventArgse)  
-{  
-DialogResult=true;  
-}  
-  
-privatevoidCancelButton_Click(objectsender, RoutedEventArgse)  
-{  
-DialogResult=false;  
+```csharp
+private void OkButton_Click(object sender, RoutedEventArgs e)
+{
+    DialogResult = true;
 }
-```
+
+private void CancelButton_Click(object sender, RoutedEventArgs e)
+{
+    DialogResult = false;
+}
 ```
 
 Použití v hlavním okně:
 
-```
-C#
+```csharp
+SecondWindow window = new SecondWindow();
 
-```
-SecondWindowwindow=newSecondWindow();  
-  
-bool?result=window.ShowDialog();  
-  
-if (result==true)  
-{  
-MessageBox.Show("Uživatel potvrdil akci.");  
-}  
-else  
-{  
-MessageBox.Show("Uživatel akci zrušil.");  
+bool? result = window.ShowDialog();
+
+if (result == true)
+{
+    MessageBox.Show("Uživatel potvrdil akci.");
 }
-```
+else
+{
+    MessageBox.Show("Uživatel akci zrušil.");
+}
 ```
 
 `DialogResult` lze nastavit pouze u okna otevřeného pomocí `ShowDialog()`. Po nastavení hodnoty `DialogResult` se dialog zavře. [Microsoft Learn](https://learn.microsoft.com/en-us/dotnet/desktop/wpf/windows/dialog-boxes-overview)
 
 ---
 
-# **Předání dat do nového okna**
+## Předání dat do nového okna
 
 Data lze do dalšího okna předat například přes konstruktor.
 
-## **MainWindow.xaml.cs**
+### MainWindow.xaml.cs
 
-```
-C#
-
-```
-privatevoidOpenWindow_Click(objectsender, RoutedEventArgse)  
-{  
-SecondWindowwindow=newSecondWindow("Ahoj z hlavního okna");  
-window.Show();  
+```csharp
+private void OpenWindow_Click(object sender, RoutedEventArgs e)
+{
+    SecondWindow window = new SecondWindow("Ahoj z hlavního okna");
+    window.Show();
 }
 ```
-```
 
-## **SecondWindow.xaml.cs**
+### SecondWindow.xaml.cs
 
-```
-C#
+```csharp
+public partial class SecondWindow : Window
+{
+    public SecondWindow(string message)
+    {
+        InitializeComponent();
 
-```
-publicpartialclassSecondWindow : Window  
-{  
-publicSecondWindow(stringmessage)  
-    {  
-InitializeComponent();  
-  
-MessageTextBlock.Text=message;  
-    }  
+        MessageTextBlock.Text = message;
+    }
 }
 ```
-```
 
-## **SecondWindow.xaml**
+### SecondWindow.xaml
 
-```
-XML
-
-```
-<Grid>  
-<TextBlockx:Name="MessageTextBlock"  
-FontSize="20"  
-HorizontalAlignment="Center"  
-VerticalAlignment="Center"/>  
+```xml
+<Grid>
+    <TextBlock x:Name="MessageTextBlock"
+               FontSize="20"
+               HorizontalAlignment="Center"
+               VerticalAlignment="Center" />
 </Grid>
-```
 ```
 
 ---
 
-# **Předání dat zpět do hlavního okna**
+## Předání dat zpět do hlavního okna
 
 Pokud má dialog vracet hodnotu, můžeme vytvořit veřejnou vlastnost.
 
-## **SecondWindow.xaml.cs**
+### SecondWindow.xaml.cs
 
-```
-C#
+```csharp
+public partial class SecondWindow : Window
+{
+    public string UserName { get; private set; }
 
-```
-publicpartialclassSecondWindow : Window  
-{  
-publicstringUserName { get; privateset; }  
-  
-publicSecondWindow()  
-    {  
-InitializeComponent();  
-    }  
-  
-privatevoidOkButton_Click(objectsender, RoutedEventArgse)  
-    {  
-UserName=NameTextBox.Text;  
-DialogResult=true;  
-    }  
+    public SecondWindow()
+    {
+        InitializeComponent();
+    }
+
+    private void OkButton_Click(object sender, RoutedEventArgs e)
+    {
+        UserName = NameTextBox.Text;
+        DialogResult = true;
+    }
 }
 ```
-```
 
-## **MainWindow.xaml.cs**
+### MainWindow.xaml.cs
 
-```
-C#
+```csharp
+private void OpenDialog_Click(object sender, RoutedEventArgs e)
+{
+    SecondWindow window = new SecondWindow();
 
-```
-privatevoidOpenDialog_Click(objectsender, RoutedEventArgse)  
-{  
-SecondWindowwindow=newSecondWindow();  
-  
-if (window.ShowDialog() ==true)  
-    {  
-stringname=window.UserName;  
-MessageBox.Show($"Zadané jméno: {name}");  
-    }  
+    if (window.ShowDialog() == true)
+    {
+        string name = window.UserName;
+        MessageBox.Show($"Zadané jméno: {name}");
+    }
 }
-```
 ```
 
 ---
 
-# **Vlastnost Owner**
+## Vlastnost Owner
 
-Vlastnost `Owner` určuje, které okno je vlastníkem jiného okna.  
-To je užitečné hlavně u dialogů, protože dialog se potom chová jako součást hlavního okna. Třída `Window` podporuje správu vlastněných oken pomocí vlastností jako `Owner` a `OwnedWindows`. [Microsoft Learn](https://learn.microsoft.com/en-us/dotnet/api/system.windows.window?view=windowsdesktop-10.0)
+Vlastnost `Owner` určuje, které okno je vlastníkem jiného okna. To je užitečné hlavně u dialogů, protože dialog se potom chová jako součást hlavního okna. Třída `Window` podporuje správu vlastněných oken pomocí vlastností jako `Owner` a `OwnedWindows`. [Microsoft Learn](https://learn.microsoft.com/en-us/dotnet/api/system.windows.window?view=windowsdesktop-10.0)
 
-```
-C#
-
-```
-SecondWindowwindow=newSecondWindow();  
-window.Owner=this;  
+```csharp
+SecondWindow window = new SecondWindow();
+window.Owner = this;
 window.ShowDialog();
-```
 ```
 
 Výhody použití `Owner`:
 
--   dialog se lépe váže k hlavnímu oknu
-    
--   minimalizace hlavního okna ovlivní i vlastněné okno
-    
--   dialog se zobrazuje logičtěji vůči hlavnímu oknu
-    
--   pomáhá správnému chování modálních oken
-    
+- dialog se lépe váže k hlavnímu oknu,
+- minimalizace hlavního okna ovlivní i vlastněné okno,
+- dialog se zobrazuje logičtěji vůči hlavnímu oknu,
+- pomáhá správnému chování modálních oken.
 
 ---
 
-# **Nejdůležitější vlastnosti okna**
+## Nejdůležitější vlastnosti okna
 
-## **Title**
+### Title
 
 Text v titulku okna.
 
-```
-XML
-
-```
-<WindowTitle="Nastavení aplikace">  
+```xml
+<Window Title="Nastavení aplikace">
 </Window>
-```
 ```
 
 ---
 
-## **Width a Height**
+### Width a Height
 
 Určují šířku a výšku okna.
 
-```
-XML
-
-```
-<WindowWidth="400"Height="300">  
+```xml
+<Window Width="400" Height="300">
 </Window>
-```
 ```
 
 ---
 
-## **WindowStartupLocation**
+### WindowStartupLocation
 
 Určuje, kde se okno zobrazí při otevření.
 
 Nejčastější hodnoty:
 
--   `Manual`
-    
--   `CenterScreen`
-    
--   `CenterOwner`
-    
+- `Manual`,
+- `CenterScreen`,
+- `CenterOwner`.
 
-```
-XML
-
-```
-<WindowWindowStartupLocation="CenterOwner">  
+```xml
+<Window WindowStartupLocation="CenterOwner">
 </Window>
-```
 ```
 
 ---
 
-## **ResizeMode**
+### ResizeMode
 
 Určuje, zda může uživatel měnit velikost okna.
 
 Nejčastější hodnoty:
 
--   `CanResize`
-    
--   `NoResize`
-    
--   `CanMinimize`
-    
--   `CanResizeWithGrip`
-    
+- `CanResize`,
+- `NoResize`,
+- `CanMinimize`,
+- `CanResizeWithGrip`.
 
-```
-XML
-
-```
-<WindowResizeMode="NoResize">  
+```xml
+<Window ResizeMode="NoResize">
 </Window>
-```
 ```
 
 ---
 
-## **WindowState**
+### WindowState
 
 Určuje stav okna.
 
 Hodnoty:
 
--   `Normal`
-    
--   `Minimized`
-    
--   `Maximized`
-    
+- `Normal`,
+- `Minimized`,
+- `Maximized`.
 
-```
-XML
-
-```
-<WindowWindowState="Maximized">  
+```xml
+<Window WindowState="Maximized">
 </Window>
-```
 ```
 
 ---
 
-## **Topmost**
+### Topmost
 
 Pokud je `true`, okno zůstává nad ostatními okny.
 
-```
-XML
-
-```
-<WindowTopmost="True">  
+```xml
+<Window Topmost="True">
 </Window>
-```
 ```
 
 ---
 
-## **ShowInTaskbar**
+### ShowInTaskbar
 
 Určuje, zda se okno zobrazí na hlavním panelu Windows.
 
-```
-XML
-
-```
-<WindowShowInTaskbar="False">  
+```xml
+<Window ShowInTaskbar="False">
 </Window>
 ```
+
+---
+
+### Owner
+
+Vlastník okna. Často se nastavuje v C# kódu:
+
+```csharp
+window.Owner = this;
 ```
 
 ---
 
-## **Owner**
+## Nejdůležitější metody okna
 
-Vlastník okna.  
-Často se nastavuje v C# kódu:
-
-```
-C#
-
-```
-window.Owner=this;
-```
-```
-
----
-
-# **Nejdůležitější metody okna**
-
-## **Show**
+### Show
 
 Otevře okno nemodálně.
 
-```
-C#
-
-```
+```csharp
 window.Show();
-```
 ```
 
 ---
 
-## **ShowDialog**
+### ShowDialog
 
 Otevře okno modálně a vrací hodnotu `bool?`.
 
-```
-C#
-
-```
-bool?result=window.ShowDialog();
-```
+```csharp
+bool? result = window.ShowDialog();
 ```
 
 ---
 
-## **Close**
+### Close
 
 Zavře okno.
 
-```
-C#
-
-```
+```csharp
 this.Close();
-```
 ```
 
 ---
 
-## **Hide**
+### Hide
 
 Skryje okno, ale nezničí ho.
 
-```
-C#
-
-```
+```csharp
 this.Hide();
-```
 ```
 
 ---
 
-## **Activate**
+### Activate
 
 Pokusí se aktivovat okno a přesunout na něj fokus.
 
-```
-C#
-
-```
+```csharp
 this.Activate();
-```
 ```
 
 Třída `Window` podporuje správu životního cyklu okna pomocí metod a událostí jako `Show`, `Close`, `Hide`, `Activate`, `Closing` nebo `Closed`. [Microsoft Learn](https://learn.microsoft.com/en-us/dotnet/api/system.windows.window?view=windowsdesktop-10.0)
 
 ---
 
-# **Nejdůležitější události okna**
+## Nejdůležitější události okna
 
-## **Loaded**
+### Loaded
 
 Spustí se po načtení okna.
 
-```
-C#
-
-```
-privatevoidWindow_Loaded(objectsender, RoutedEventArgse)  
-{  
-MessageBox.Show("Okno bylo načteno.");  
+```csharp
+private void Window_Loaded(object sender, RoutedEventArgs e)
+{
+    MessageBox.Show("Okno bylo načteno.");
 }
-```
 ```
 
 ---
 
-## **Closing**
+### Closing
 
-Spustí se ve chvíli, kdy se okno zavírá.  
-Zavření je možné zrušit nastavením `e.Cancel = true`. Událost `Closing` se vyvolá například při zavolání `Close()`, kliknutí na zavírací tlačítko nebo stisknutí `Alt + F4`. [Microsoft Learn](https://learn.microsoft.com/en-us/dotnet/api/system.windows.window.closing?view=windowsdesktop-10.0)
+Spustí se ve chvíli, kdy se okno zavírá. Zavření je možné zrušit nastavením `e.Cancel = true`. Událost `Closing` se vyvolá například při zavolání `Close()`, kliknutí na zavírací tlačítko nebo stisknutí `Alt + F4`. [Microsoft Learn](https://learn.microsoft.com/en-us/dotnet/api/system.windows.window.closing?view=windowsdesktop-10.0)
 
-```
-C#
+```csharp
+private void Window_Closing(object sender, CancelEventArgs e)
+{
+    MessageBoxResult result = MessageBox.Show(
+        "Opravdu chcete zavřít okno?",
+        "Potvrzení",
+        MessageBoxButton.YesNo);
 
-```
-privatevoidWindow_Closing(objectsender, CancelEventArgse)  
-{  
-MessageBoxResultresult=MessageBox.Show(  
-"Opravdu chcete zavřít okno?",  
-"Potvrzení",  
-MessageBoxButton.YesNo);  
-  
-if (result==MessageBoxResult.No)  
-    {  
-e.Cancel=true;  
-    }  
+    if (result == MessageBoxResult.No)
+    {
+        e.Cancel = true;
+    }
 }
-```
 ```
 
 ---
 
-## **Closed**
+### Closed
 
 Spustí se po úplném zavření okna.
 
-```
-C#
-
-```
-privatevoidWindow_Closed(objectsender, EventArgse)  
-{  
-MessageBox.Show("Okno bylo zavřeno.");  
+```csharp
+private void Window_Closed(object sender, EventArgs e)
+{
+    MessageBox.Show("Okno bylo zavřeno.");
 }
-```
 ```
 
 ---
 
-## **Activated**
+### Activated
 
 Spustí se, když se okno stane aktivním.
 
-```
-C#
-
-```
-privatevoidWindow_Activated(objectsender, EventArgse)  
-{  
-// Okno získalo fokus  
+```csharp
+private void Window_Activated(object sender, EventArgs e)
+{
+    // Okno získalo fokus.
 }
-```
 ```
 
 ---
 
-## **Deactivated**
+### Deactivated
 
 Spustí se, když okno přestane být aktivní.
 
-```
-C#
-
-```
-privatevoidWindow_Deactivated(objectsender, EventArgse)  
-{  
-// Uživatel přešel na jiné okno  
+```csharp
+private void Window_Deactivated(object sender, EventArgs e)
+{
+    // Uživatel přešel na jiné okno.
 }
-```
 ```
 
 ---
 
-# **Životnost aplikace a ShutdownMode**
+## Životnost aplikace a ShutdownMode
 
-U aplikací s více okny je důležité, kdy se celá aplikace ukončí.  
-Chování řídí vlastnost `ShutdownMode`. Výchozí chování WPF je ukončit aplikaci po zavření posledního okna. Aplikaci lze také nastavit tak, aby se ukončila už při zavření hlavního okna. [Microsoft Learn+1](https://learn.microsoft.com/en-us/dotnet/desktop/wpf/app-development/application-management-overview)
+U aplikací s více okny je důležité, kdy se celá aplikace ukončí. Chování řídí vlastnost `ShutdownMode`. Výchozí chování WPF je ukončit aplikaci po zavření posledního okna. Aplikaci lze také nastavit tak, aby se ukončila už při zavření hlavního okna. [Microsoft Learn](https://learn.microsoft.com/en-us/dotnet/desktop/wpf/app-development/application-management-overview)
 
-## **App.xaml**
+### App.xaml
 
-```
-XML
-
-```
-<Applicationx:Class="WpfApp.App"  
-StartupUri="MainWindow.xaml"  
-ShutdownMode="OnMainWindowClose">  
+```xml
+<Application x:Class="WpfApp.App"
+             StartupUri="MainWindow.xaml"
+             ShutdownMode="OnMainWindowClose">
 </Application>
-```
 ```
 
 Časté hodnoty:
 
--   `OnLastWindowClose` → aplikace skončí po zavření posledního okna
-    
--   `OnMainWindowClose` → aplikace skončí po zavření hlavního okna
-    
--   `OnExplicitShutdown` → aplikace skončí až po ručním zavolání `Shutdown()`
-    
+- `OnLastWindowClose` → aplikace skončí po zavření posledního okna,
+- `OnMainWindowClose` → aplikace skončí po zavření hlavního okna,
+- `OnExplicitShutdown` → aplikace skončí až po ručním zavolání `Shutdown()`.
 
 ---
 
-# **Příklad: hlavní okno otevírá druhé okno**
+## Příklad: hlavní okno otevírá druhé okno
 
-## **MainWindow.xaml**
+### MainWindow.xaml
 
-```
-XML
+```xml
+<Window x:Class="WpfApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Hlavní okno"
+        Width="400"
+        Height="250">
 
-```
-<Windowx:Class="WpfApp.MainWindow"  
-xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"  
-xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"  
-Title="Hlavní okno"  
-Width="400"  
-Height="250">  
-  
-<StackPanelHorizontalAlignment="Center"  
-VerticalAlignment="Center">  
-  
-<ButtonContent="Otevřít druhé okno"  
-Width="180"  
-Height="35"  
-Click="OpenWindow_Click"/>  
-  
-</StackPanel>  
+    <StackPanel HorizontalAlignment="Center"
+                VerticalAlignment="Center">
+
+        <Button Content="Otevřít druhé okno"
+                Width="180"
+                Height="35"
+                Click="OpenWindow_Click" />
+
+    </StackPanel>
 </Window>
 ```
-```
 
-## **MainWindow.xaml.cs**
+### MainWindow.xaml.cs
 
-```
-C#
-
-```
-privatevoidOpenWindow_Click(objectsender, RoutedEventArgse)  
-{  
-SecondWindowwindow=newSecondWindow();  
-window.Owner=this;  
-window.Show();  
+```csharp
+private void OpenWindow_Click(object sender, RoutedEventArgs e)
+{
+    SecondWindow window = new SecondWindow();
+    window.Owner = this;
+    window.Show();
 }
-```
 ```
 
 ---
 
-# **Příklad: modální dialog s potvrzením**
+## Příklad: modální dialog s potvrzením
 
-## **SecondWindow.xaml**
+### SecondWindow.xaml
 
-```
-XML
+```xml
+<Window x:Class="WpfApp.SecondWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Dialog"
+        Width="300"
+        Height="180"
+        WindowStartupLocation="CenterOwner"
+        ResizeMode="NoResize">
 
-```
-<Windowx:Class="WpfApp.SecondWindow"  
-xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"  
-xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"  
-Title="Dialog"  
-Width="300"  
-Height="180"  
-WindowStartupLocation="CenterOwner"  
-ResizeMode="NoResize">  
-  
-<StackPanelMargin="20">  
-<TextBlockText="Chcete pokračovat?"  
-FontSize="16"  
-Margin="0,0,0,20"/>  
-  
-<StackPanelOrientation="Horizontal"  
-HorizontalAlignment="Right">  
-<ButtonContent="OK"  
-Width="80"  
-Margin="0,0,10,0"  
-Click="OkButton_Click"/>  
-  
-<ButtonContent="Zrušit"  
-Width="80"  
-Click="CancelButton_Click"/>  
-</StackPanel>  
-</StackPanel>  
+    <StackPanel Margin="20">
+        <TextBlock Text="Chcete pokračovat?"
+                   FontSize="16"
+                   Margin="0,0,0,20" />
+
+        <StackPanel Orientation="Horizontal"
+                    HorizontalAlignment="Right">
+            <Button Content="OK"
+                    Width="80"
+                    Margin="0,0,10,0"
+                    Click="OkButton_Click" />
+
+            <Button Content="Zrušit"
+                    Width="80"
+                    Click="CancelButton_Click" />
+        </StackPanel>
+    </StackPanel>
 </Window>
 ```
-```
 
-## **SecondWindow.xaml.cs**
+### SecondWindow.xaml.cs
 
-```
-C#
+```csharp
+private void OkButton_Click(object sender, RoutedEventArgs e)
+{
+    DialogResult = true;
+}
 
-```
-privatevoidOkButton_Click(objectsender, RoutedEventArgse)  
-{  
-DialogResult=true;  
-}  
-  
-privatevoidCancelButton_Click(objectsender, RoutedEventArgse)  
-{  
-DialogResult=false;  
+private void CancelButton_Click(object sender, RoutedEventArgs e)
+{
+    DialogResult = false;
 }
 ```
-```
 
-## **MainWindow.xaml.cs**
+### MainWindow.xaml.cs
 
-```
-C#
+```csharp
+private void OpenDialog_Click(object sender, RoutedEventArgs e)
+{
+    SecondWindow dialog = new SecondWindow();
+    dialog.Owner = this;
 
-```
-privatevoidOpenDialog_Click(objectsender, RoutedEventArgse)  
-{  
-SecondWindowdialog=newSecondWindow();  
-dialog.Owner=this;  
-  
-if (dialog.ShowDialog() ==true)  
-    {  
-MessageBox.Show("Uživatel klikl na OK.");  
-    }  
-else  
-    {  
-MessageBox.Show("Uživatel dialog zrušil.");  
-    }  
+    if (dialog.ShowDialog() == true)
+    {
+        MessageBox.Show("Uživatel klikl na OK.");
+    }
+    else
+    {
+        MessageBox.Show("Uživatel dialog zrušil.");
+    }
 }
-```
 ```
 
 ---
 
-# **Časté chyby při práci s více okny**
+## Časté chyby při práci s více okny
 
-### **Zapomenuté vytvoření instance okna**
+### Zapomenuté vytvoření instance okna
 
 Špatně:
 
-```
-C#
-
-```
+```csharp
 SecondWindow.Show();
 ```
-```
 
 Správně:
 
-```
-C#
-
-```
-SecondWindowwindow=newSecondWindow();  
+```csharp
+SecondWindow window = new SecondWindow();
 window.Show();
-```
 ```
 
 ---
 
-### **Použití DialogResult bez ShowDialog**
+### Použití DialogResult bez ShowDialog
 
 Špatně:
 
-```
-C#
-
-```
-SecondWindowwindow=newSecondWindow();  
-window.Show();  
-window.DialogResult=true;
-```
+```csharp
+SecondWindow window = new SecondWindow();
+window.Show();
+window.DialogResult = true;
 ```
 
 Správně:
 
-```
-C#
-
-```
-SecondWindowwindow=newSecondWindow();  
+```csharp
+SecondWindow window = new SecondWindow();
 window.ShowDialog();
 ```
-```
 
-`DialogResult` patří hlavně k modálním dialogům otevřeným přes `ShowDialog()`. [Microsoft Learn+1](https://learn.microsoft.com/en-us/dotnet/desktop/wpf/windows/dialog-boxes-overview)
+`DialogResult` patří hlavně k modálním dialogům otevřeným přes `ShowDialog()`. [Microsoft Learn](https://learn.microsoft.com/en-us/dotnet/desktop/wpf/windows/dialog-boxes-overview)
 
 ---
 
-### **Otevírání mnoha stejných oken**
+### Otevírání mnoha stejných oken
 
 Při každém kliknutí vznikne nové okno:
 
-```
-C#
-
-```
-SecondWindowwindow=newSecondWindow();  
+```csharp
+SecondWindow window = new SecondWindow();
 window.Show();
-```
 ```
 
 Pokud chceme mít pouze jedno pomocné okno, můžeme si ho uložit do proměnné:
 
-```
-C#
+```csharp
+private SecondWindow secondWindow;
 
-```
-privateSecondWindowsecondWindow;  
-  
-privatevoidOpenWindow_Click(objectsender, RoutedEventArgse)  
-{  
-if (secondWindow==null)  
-    {  
-secondWindow=newSecondWindow();  
-secondWindow.Closed+= (s, args) =>secondWindow=null;  
-secondWindow.Show();  
-    }  
-else  
-    {  
-secondWindow.Activate();  
-    }  
+private void OpenWindow_Click(object sender, RoutedEventArgs e)
+{
+    if (secondWindow == null)
+    {
+        secondWindow = new SecondWindow();
+        secondWindow.Closed += (s, args) => secondWindow = null;
+        secondWindow.Show();
+    }
+    else
+    {
+        secondWindow.Activate();
+    }
 }
-```
 ```
 
 ---
 
-# **Shrnutí**
+## Shrnutí
 
--   Ve WPF se okna vytvářejí pomocí třídy `Window`.
-    
--   Další okno se otevře pomocí `Show()` nebo `ShowDialog()`.
-    
--   `Show()` otevře běžné nemodální okno.
-    
--   `ShowDialog()` otevře modální dialog a čeká na jeho zavření.
-    
--   Data lze předávat do okna přes konstruktor nebo vlastnosti.
-    
--   Data zpět lze vracet přes veřejné vlastnosti a `DialogResult`.
-    
--   Vlastnost `Owner` pomáhá správně propojit dialog s hlavním oknem.
-    
--   Událost `Closing` lze použít k potvrzení zavření okna.
-    
--   U více oken je důležité nastavit správný `ShutdownMode`.
+- Ve WPF se okna vytvářejí pomocí třídy `Window`.
+- Další okno se otevře pomocí `Show()` nebo `ShowDialog()`.
+- `Show()` otevře běžné nemodální okno.
+- `ShowDialog()` otevře modální dialog a čeká na jeho zavření.
+- Data lze předávat do okna přes konstruktor nebo vlastnosti.
+- Data zpět lze vracet přes veřejné vlastnosti a `DialogResult`.
+- Vlastnost `Owner` pomáhá správně propojit dialog s hlavním oknem.
+- Událost `Closing` lze použít k potvrzení zavření okna.
+- U více oken je důležité nastavit správný `ShutdownMode`.
